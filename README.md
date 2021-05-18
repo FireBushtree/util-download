@@ -1,8 +1,16 @@
-# @env/util-download
+# envcloud-utils-downloads
 
 ## Install
 
+```
+yarn add envcloud-utils-downloads
+```
 
+or
+
+```
+npm i envcloud-utils-downloads
+```
 ## Getting Started
 
 Install dependencies,

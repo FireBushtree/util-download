@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { useDownload } from '@env/util-download';
+import { useDownload } from 'envcloud-utils-downloads';
 
 const Demo = () => {
   const { run, loading } = useDownload(

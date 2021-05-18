@@ -10,7 +10,7 @@
     "baseUrl": "./",
     "strict": true,
     "paths": {
-      "@env/util-download": ["src"],
+      "envcloud-utils-downloads": ["src"],
       "@/*": ["src/*"],
       "@@/*": ["src/.umi/*"]
     },

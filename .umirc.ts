@@ -1,7 +1,7 @@
 import { defineConfig } from 'dumi';
 
 export default defineConfig({
-  title: '@env/util-download',
+  title: 'envcloud-utils-downloads',
   favicon:
     './images/logo.png',
   logo: './images/logo.png',

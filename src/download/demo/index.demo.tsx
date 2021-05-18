@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'antd';
-import { download } from '@env/util-download';
+import { download } from 'envcloud-utils-downloads';
 
 const Demo = () => {
   const handleDownload = async () => {
