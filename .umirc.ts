@@ -4,8 +4,10 @@ export default defineConfig({
   title: 'envcloud-utils-downloads',
   favicon:
     './images/logo.png',
-  logo: './images/logo.png',
+  logo: '/util-download/images/logo.png',
   outputPath: 'docs-dist',
+  base: '/util-download',
+  publicPath: '/util-download/',
   proxy: {
     '/cloud/njgcq/': {
       target: 'http://218.2.157.51:8003',
