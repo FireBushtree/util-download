@@ -1,7 +1,18 @@
 import qs from 'qs';
 
 export interface DownloadOption {
+  /**
+   * 指定下载的文件名
+   */
   fileName?: string;
+  /**
+   * 设置额外的请求头
+   */
+  headers?: any;
+  /**
+   * 是否以`form-data`的格式发送请求
+   */
+  formData?: boolean
 }
 
 /**
@@ -13,7 +24,7 @@ export interface DownloadOption {
  */
 const download = (url: string, params?: any, options?: DownloadOption) =>
   new Promise<XMLHttpRequest>((resolve, reject) => {
-    let { fileName } = options || {}
+    let { fileName, headers, formData } = options || {}
 
     const xhr = new XMLHttpRequest();
 
@@ -22,8 +33,21 @@ const download = (url: string, params?: any, options?: DownloadOption) =>
 
     xhr.open('post', url);
     xhr.responseType = 'blob';
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.send(qs.stringify(params));
+
+    if (headers && typeof headers === 'object') {
+      for (const [key, value] of Object.entries(headers)) {
+        xhr.setRequestHeader(key, value as string)
+      }
+    }
+
+    if (formData) {
+      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      xhr.send(qs.stringify(params));
+    } else {
+      xhr.setRequestHeader('Content-type', 'application/json');
+      xhr.send(JSON.stringify(params));
+    }
+
     xhr.onload = function () {
       if (this.status === 200) {
         try {

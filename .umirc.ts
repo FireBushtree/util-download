@@ -9,8 +9,8 @@ export default defineConfig({
   base: '/util-download',
   publicPath: '/util-download/',
   proxy: {
-    '/cloud/njgcq/': {
-      target: 'http://218.2.157.51:8003',
+    '/cloud': {
+      target: 'http://ljfl.cc.envcloud.com.cn',
       timeout: 1000 * 60 * 10,
       changeOrigin: true,
     },

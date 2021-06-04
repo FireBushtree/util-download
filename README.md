@@ -1,4 +1,10 @@
-# envcloud-utils-downloads
+# envcloud-utils-
+
+## 1.*
+默认的下载方式为 `form-data`
+
+## 2.*
+默认的下载方式为 `json`
 
 ## Install
 
