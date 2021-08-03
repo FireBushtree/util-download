@@ -10,7 +10,7 @@ export default defineConfig({
   publicPath: '/util-download/',
   proxy: {
     '/cloud': {
-      target: 'http://ljfl.cc.envcloud.com.cn',
+      target: 'http://112.21.188.143:8003',
       timeout: 1000 * 60 * 10,
       changeOrigin: true,
     },

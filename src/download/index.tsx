@@ -12,7 +12,11 @@ export interface DownloadOption {
   /**
    * 是否以`form-data`的格式发送请求
    */
-  formData?: boolean
+  formData?: boolean;
+  /**
+   * 文件名是否先以`escape`编码，再解码
+   */
+  escape?: boolean;
 }
 
 /**
@@ -24,7 +28,7 @@ export interface DownloadOption {
  */
 const download = (url: string, params?: any, options?: DownloadOption) =>
   new Promise<XMLHttpRequest>((resolve, reject) => {
-    let { fileName, headers, formData } = options || {}
+    let { fileName, headers, formData, escape } = options || {}
 
     const xhr = new XMLHttpRequest();
 
@@ -55,7 +59,14 @@ const download = (url: string, params?: any, options?: DownloadOption) =>
             // get `fileName` from response headers
             const responseDisposition =
               this.getResponseHeader('content-disposition') || '';
-            fileName = decodeURI(responseDisposition.split('=')[1]);
+
+            fileName = responseDisposition.split('=')[1];
+
+            if (escape) {
+              fileName = window.escape(fileName);
+            }
+
+            fileName = decodeURI(fileName);
           }
 
           // create <a href="" download="" /> tag to download
